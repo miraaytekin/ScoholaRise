@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ScholaRise  Connecting Dreams to Resources</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #12212f;
+      background: #f3f5f9;
+    }
+    header {
+      background: #0b2141;
+      padding: 18px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #101828;
+    }
+    .logo-text {
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #e5edf7;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #e5edf7;
+      font-size: 14px;
+      padding: 4px 0;
+      transition: color 0.15s ease;
+    }
+    nav a:hover {
+      color: #94c2ff;
+    }
+
+    .page-wrap {
+      background: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-copy {
+      text-align: left;
+    }
+    .hero-title {
+      font-size: 38px;
+      margin-bottom: 16px;
+      color: #101828;
+    }
+    .hero-subtitle {
+      font-size: 18px;
+      margin-bottom: 16px;
+      color: #344054;
+    }
+    .hero-text {
+      max-width: 700px;
+      margin: 0 0 24px;
+      color: #4b5563;
+    }
+    .hero-actions {
+      display: flex;
+      justify-content: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual-inner {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px 22px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+      border: 1px solid #dde4f0;
+    }
+    .hero-logo {
+      max-width: 360px;
+      width: 100%;
+      display: block;
+    }
+
+    .btn {
+      padding: 10px 22px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+    .btn-primary {
+      background: #1d4ed8;
+      color: #ffffff;
+      border-color: #1d4ed8;
+    }
+    .btn-outline {
+      background: #ffffff;
+      color: #1d4ed8;
+      border-color: #cbd5f1;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+    }
+    .btn:hover {
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
+    }
+    .btn-primary:hover {
+      background: #163fa3;
+      border-color: #163fa3;
+    }
+    .btn-outline:hover {
+      border-color: #1d4ed8;
+      background: #eef2ff;
+    }
+
+    section { padding: 40px 0; }
+    section:nth-of-type(odd) {
+      background: #ffffff;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      color: #101828;
+    }
+    .section-intro {
+      margin-bottom: 20px;
+      color: #4b5563;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 18px 20px;
+      border: 1px solid #dde4f0;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+    }
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: #111827;
+    }
+    .muted { color: #4b5563; font-size: 14px; }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    ul { padding-left: 18px; }
+    li { margin-bottom: 6px; }
+
+    .contact-form {
+      max-width: 520px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 20px 22px;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+      border: 1px solid #dde4f0;
+    }
+    .form-row { margin-bottom: 12px; }
+    label { display: block; font-size: 14px; margin-bottom: 4px; }
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #cbd2e1;
+      font: inherit;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 12px;
+      color: #6b7280;
+      background: #0b2141;
+      border-top: 1px solid #101828;
+    }
+
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-copy {
+        text-align: center;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero-visual {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 16px 16px; }
+      .hero-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-text">ScholaRise</div>
+    <nav>
+      <a href="#why">Why Us</a>
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#mission">Mission & Vision</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="page-wrap">
+    <section class="hero" id="top">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <h1 class="hero-title">ScholaRise – Connecting Dreams to Resources</h1>
+            <p class="hero-subtitle">Specialized loans and financial guidance for International Baccalaureate (IB) students in Europe.</p>
+            <p class="hero-text">
+              We help IB students in Germany, Switzerland and the Netherlands finance tuition, living expenses, exam fees and application costs
+              through accessible student loans and personalized consulting.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get Started</button>
+              <button class="btn btn-outline" onclick="document.getElementById('how').scrollIntoView({behavior: 'smooth'})">Check Your Eligibility</button>
+            </div>
+          </div>
+          <div class="hero-visual">
+            <div class="hero-visual-inner">
+              <img src="ScholoRise.png" alt="ScholaRise logo" class="hero-logo" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why">
+      <div class="container">
+        <h2>Why ScholaRise?</h2>
+        <p class="section-intro">Designed for IB students, built on trust, transparency and social impact.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>IB-Focused Support</h3>
+            <p class="muted">Services tailored specifically to the IB journey, from Diploma Programme to university transition.</p>
+          </div>
+          <div class="card">
+            <h3>Social Enterprise Model</h3>
+            <p class="muted">Impact first: we reinvest in student success and educational access, not just profit.</p>
+          </div>
+          <div class="card">
+            <h3>Accessible &amp; Affordable</h3>
+            <p class="muted">Fair annual interest rates (3–6%) and flexible repayment structures for students and families.</p>
+          </div>
+          <div class="card">
+            <h3>Combined Loans + Consulting</h3>
+            <p class="muted">Financial support and expert advice in one integrated solution.</p>
+          </div>
+          <div class="card">
+            <h3>Personalized Guidance</h3>
+            <p class="muted">One-to-one support for students and parents to reduce stress and uncertainty.</p>
+          </div>
+          <div class="card">
+            <h3>Trust &amp; Transparency</h3>
+            <p class="muted">Clear terms, no hidden fees and open communication at every step of the process.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>Our Services</h2>
+        <p class="section-intro">A comprehensive suite of tools and services to make educational funding simpler and fairer for IB students.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Financial Aid Assessment Tool</h3>
+            <p class="muted">Interactive tool that evaluates your financial needs and eligibility for different funding options based on your and your family's circumstances.</p>
+          </div>
+          <div class="card">
+            <h3>Consulting Services Platform</h3>
+            <p class="muted">Connects you with experienced financial advisors who guide you through funding strategies, applications and long‑term planning.</p>
+          </div>
+          <div class="card">
+            <h3>Application Management System</h3>
+            <p class="muted">Tracks deadlines, documents and application status so you never miss an opportunity.</p>
+          </div>
+          <div class="card">
+            <h3>Resource Hub for IB Students</h3>
+            <p class="muted">Guides, tips and tools helping you navigate scholarships, loans and financial planning for IB.</p>
+          </div>
+          <div class="card">
+            <h3>Data-Driven Insights Dashboard</h3>
+            <p class="muted">Analytics for partners to understand student needs, funding gaps and the impact of ScholaRise services.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="container">
+        <h2>How It Works</h2>
+        <p class="section-intro">From first questions to final applications, ScholaRise supports you step by step.</p>
+        <ol>
+          <li><strong>Explore your options</strong> – Use our Financial Aid Assessment Tool to understand your funding needs and eligibility.</li>
+          <li><strong>Get personalized guidance</strong> – Book a session with our consultants to design the best funding plan for your IB path.</li>
+          <li><strong>Apply with confidence</strong> – Use the Application Management System to submit and track funding applications on time.</li>
+          <li><strong>Learn &amp; grow</strong> – Access our Resource Hub to stay informed throughout your IB journey.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="impact">
+      <div class="container">
+        <h2>Impact &amp; Trust</h2>
+        <p class="section-intro">Built on research, backed by the IB community.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Strong Demand</h3>
+            <p class="muted">A growing number of IB students seek international study opportunities but struggle to finance essential educational costs.</p>
+          </div>
+          <div class="card">
+            <h3>Community Partnerships</h3>
+            <p class="muted">Partnerships with schools, universities and financial institutions create credibility, scalability and long‑term sustainability.</p>
+          </div>
+          <div class="card">
+            <h3>Student‑Focused Team</h3>
+            <p class="muted">Loan officers, advisors and social impact experts committed to student outcomes and responsible loan repayment.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission">
+      <div class="container">
+        <h2>Our Mission &amp; Vision</h2>
+        <div class="two-column">
+          <div>
+            <h3>Vision Statement</h3>
+            <p class="muted">“To create a world where every IB student has equal access to quality education, financial support, and the opportunity to reach their full academic and professional potential.”</p>
+          </div>
+          <div>
+            <h3>Mission Statement</h3>
+            <p class="muted">“Our mission is to empower IB students by providing affordable student loans, personalized financial guidance, and educational consulting services. We aim to remove financial barriers, support informed decision‑making, and enable students to pursue higher education with confidence and independence.”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="who">
+      <div class="container">
+        <h2>Who We Serve</h2>
+        <p class="section-intro">ScholaRise is designed for International Baccalaureate Diploma Programme (IBDP) students and their families.</p>
+        <ul>
+          <li><strong>IBDP students</strong> planning to study in Europe, especially in Germany, Switzerland and the Netherlands.</li>
+          <li><strong>Parents &amp; guardians</strong> seeking clear, responsible and affordable funding options.</li>
+          <li><strong>Schools &amp; partners</strong> looking to provide additional financial support pathways for their IB communities.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Get Started</h2>
+        <p class="section-intro">Tell us about your study plans and financial needs. We will help you build a clear, realistic funding plan.</p>
+        <form class="contact-form">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your full name" />
+          </div>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" />
+          </div>
+          <div class="form-row">
+            <label for="country">Country / School</label>
+            <input type="text" id="country" name="country" placeholder="e.g. Germany – Example IB School" />
+          </div>
+          <div class="form-row">
+            <label for="path">Planned IB / university path</label>
+            <input type="text" id="path" name="path" placeholder="e.g. IBDP → Economics, Netherlands" />
+          </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Briefly describe your situation and what kind of support you are looking for."></textarea>
+          </div>
+          <div class="form-row" style="text-align:right;">
+            <button type="submit" class="btn btn-primary">Request a Free Consultation</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> ScholaRise. Social enterprise for IB students.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
